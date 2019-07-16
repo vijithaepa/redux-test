@@ -12,11 +12,15 @@ class ChildB extends Component {
     }
 
     componentDidMount() {
-        console.log("Chiled B mounted " , this.props.name)
+        console.log("Child B mounted " , this.props)
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("Child B DidUpdate " , prevProps)
     }
 
     render() {
-        console.log("Rendering B ", this.props.name)
+        // console.log("Rendering B ", this.props.name)
         return (
             <div>
                 <h2>Child B</h2>
@@ -24,7 +28,7 @@ class ChildB extends Component {
                 <input type="text"
                        placeholder="Add Sir name"
                        ref={(input) => this.input = input}/>
-                <button onClick={this.addItem}>Add Todo</button>
+                <button onClick={this.addItem}>Add Sir name</button>
             </div>
 
 
@@ -34,6 +38,6 @@ class ChildB extends Component {
 
 export default connect((state) => (
     {
-        name: state.name
+        name: state.sirname
     }
 ))(ChildB)

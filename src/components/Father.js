@@ -7,14 +7,17 @@ import { connect } from "react-redux";
 class Father extends Component {
     addItem = (e) => {
         e.preventDefault()
-        console.log("Prps ", this.props)
         this.props.dispatch(addSirName(
             this.input.value
         ))
     }
 
     componentDidMount() {
-        console.log("Father mounted " , this.props.name)
+        console.log("Father mounted " , this.props)
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("Father DidUpdate " , prevProps)
     }
 
     render() {
@@ -25,7 +28,7 @@ class Father extends Component {
                 <input type="text"
                        placeholder="Add Todo"
                        ref={(input) => this.input = input}/>
-                <button onClick={this.addItem}>Add Todo</button>
+                <button onClick={this.addItem}>Add Sir name</button>
                 <ChildA/>
                 <ChildB/>
             </div>
@@ -35,6 +38,6 @@ class Father extends Component {
 }
 export default connect((state) => (
     {
-        name: state.name
+        name: state.sirname
     }
 ))(Father)
